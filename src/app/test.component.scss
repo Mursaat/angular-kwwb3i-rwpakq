@@ -1,0 +1,36 @@
+.horus-inoculation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 8px;
+
+  .horus-inoculation__header {
+    height: max-content;
+  }
+  .horus-inoculation__header-center {
+    justify-content: center;
+    flex: auto;
+  }
+  .horus-inoculation__header-content {
+    margin: 0.5rem auto;
+    padding-bottom: 0.1rem;
+    height: min-content;
+    overflow: auto;
+  }
+  .horus-inoculation-search-field {
+    .mat-form-field-wrapper {
+      margin: 0;
+      padding-bottom: 0;
+    }
+  }
+  .horus-inoculation__tags {
+    min-width: min-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .mat-card-content {
+      height: 100;
+    }
+  }
+}

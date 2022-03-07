@@ -1,0 +1,233 @@
+<div class="fill-height fill-width" fxLayout="column">
+  <!-- Header -->
+  <div
+    class="horus-inoculation__header fill-width"
+    fxLayoutAlign="start center"
+  >
+    <div
+      class="fill-width"
+      fxLayout="row"
+      fxLayoutGap="0.5rem"
+      fxLayoutAlign="start center"
+      *ngIf="!(specimen$ | async)?.technicalId"
+    >
+      <button
+        mat-mini-fab
+        color="primary"
+        (click)="goBackToMenu()"
+        class="mat-elevation-z0"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div
+        class="fill-width horus-inoculation__header-content"
+        fxLayout="row"
+        fxLayoutGap="0.5rem"
+        [ngClass]="{
+          'horus-inoculation__header-center': !(specimen$ | async)?.technicalId
+        }"
+      >
+        <!-- Search field -->
+        <div
+          class="horus-inoculation__header-info"
+          fxLayout="row"
+          fxLayoutGap="0.5rem"
+        >
+          <div fxLayout="column" fxLayoutGap="0.2rem">
+            <mat-card class="fill-height">
+              <mat-card-content>
+                <div>
+                  <mat-form-field
+                    appearance="outline"
+                    class="horus-inoculation-search-field"
+                  >
+                    <mat-label>Specimen Id </mat-label>
+                    <input
+                      #specimenNameInput
+                      (keydown.enter)="searchSpecimen()"
+                      (keydown.tab)="searchSpecimen()"
+                      [(ngModel)]="inputSpecimenIdValue"
+                      autocomplete="off"
+                      autofocus
+                      matInput
+                    />
+                  </mat-form-field>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fill-width"
+      fxLayout="row"
+      fxLayoutGap="0.5rem"
+      fxLayoutAlign="start center"
+      *ngIf="(specimen$ | async)?.technicalId"
+    >
+      <button
+        mat-mini-fab
+        color="primary"
+        (click)="goBackToMenu()"
+        class="mat-elevation-z0"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div div fxLayout="column" fxLayoutAlign="start start">
+        <div
+          [ngClass]="{
+            'horus-inoculation__header-center': !(specimen$ | async)
+              ?.technicalId
+          }"
+          class="fill-width horus-inoculation__header-content"
+          fxLayout="row"
+          fxLayoutGap="0.5rem"
+        >
+          <div
+            class="horus-inoculation__header-info"
+            fxLayout="row"
+            fxFlex
+            fxLayoutGap="0.5rem"
+          >
+            <!-- Search field -->
+            <div fxLayout="column" fxLayoutGap="0.2rem">
+              <mat-card class="fill-height" fxLayoutAlign="center">
+                <mat-card-content>
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="horus-inoculation-search-field"
+                    >
+                      <mat-label>Specimen Id </mat-label>
+                      <input
+                        #specimenNameInput
+                        (keydown.enter)="searchSpecimen()"
+                        (keydown.tab)="searchSpecimen()"
+                        [(ngModel)]="inputSpecimenIdValue"
+                        autocomplete="off"
+                        autofocus
+                        matInput
+                      />
+                    </mat-form-field>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+          <!-- Patient info -->
+          <div *ngIf="(specimen$ | async)?.technicalId">
+            <mat-card> Infos Patient </mat-card>
+          </div>
+        </div>
+        <div>
+          <!-- Tags -->
+          <mat-card
+            *ngIf="(specimen$ | async)?.technicalId"
+            class="horus-inoculation__tags fill-width"
+          >
+            <mat-card-content>
+              <mat-chip-list aria-label="Fish selection">
+                <mat-chip>One fish</mat-chip>
+                <mat-chip>Two fish</mat-chip>
+                <mat-chip color="primary" selected>Primary fish</mat-chip>
+                <mat-chip color="accent" selected>Accent fish</mat-chip>
+              </mat-chip-list>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fill-height fill-width" fxLayout="column">
+  <!-- Header -->
+  <div class="horus-inoculation__header fill-width" fxLayoutAlign="center">
+    <div
+      class="fill-width"
+      fxLayout="row"
+      fxLayoutGap="0.5rem"
+      fxLayoutAlign="start center"
+    >
+      <button
+        mat-mini-fab
+        color="primary"
+        (click)="goBackToMenu()"
+        class="mat-elevation-z0"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div
+        div
+        fxLayout="column"
+        fxLayoutAlign="start start"
+        class="fill-width"
+        fxFlex="50"
+      >
+        <div
+          [ngClass]="{
+            'horus-inoculation__header-center': !(specimen$ | async)
+              ?.technicalId
+          }"
+          class="fill-width horus-inoculation__header-content"
+          fxLayout="row"
+          fxLayoutGap="0.5rem"
+        >
+          <div
+            class="horus-inoculation__header-info"
+            fxLayout="row"
+            fxLayoutGap="0.5rem"
+          >
+            <!-- Search field -->
+            <div fxLayout="column" fxLayoutGap="0.2rem">
+              <mat-card class="fill-height" fxLayoutAlign="center">
+                <mat-card-content>
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="horus-inoculation-search-field"
+                    >
+                      <mat-label
+                        >{{ 'specimen.specimen-id' | translate }}
+                      </mat-label>
+                      <input
+                        #specimenNameInput
+                        (keydown.enter)="searchSpecimen()"
+                        (keydown.tab)="searchSpecimen()"
+                        [(ngModel)]="inputSpecimenIdValue"
+                        autocomplete="off"
+                        autofocus
+                        matInput
+                      />
+                    </mat-form-field>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+          <!-- Patient info -->
+          <div fxFlex *ngIf="(specimen$ | async)?.technicalId">
+            <mat-card>Infos Patient</mat-card>
+          </div>
+        </div>
+        <div>
+          <!-- Tags -->
+          <mat-card
+            *ngIf="(specimen$ | async)?.technicalId"
+            class="horus-inoculation__tags fill-width"
+          >
+            <mat-card-content>
+              <mat-chip-list aria-label="Fish selection">
+                <mat-chip>One fish</mat-chip>
+                <mat-chip>Two fish</mat-chip>
+                <mat-chip color="primary" selected>Primary fish</mat-chip>
+                <mat-chip color="accent" selected>Accent fish</mat-chip>
+              </mat-chip-list>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
